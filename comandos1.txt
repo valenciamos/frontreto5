@@ -1,0 +1,73 @@
+chmod 400 ssh-key-2021-11-03.key
+
+
+
+---------------------------------------------
+para conectar la maquina
+--------------------------------------- Ey957305$
+ssh -i ssh-key-2021-11-03.key opc@129.151.99.150
+java -jar recursosh-0.0.1-SNAPSHOT.jar
+
+ip para pegar en master tech
+http://144.22.57.65:8080/
+
+http://129.151.99.150:8080/
+-------------------------------
+
+comandos para instalar en la maquina
+
+sudo yum update
+
+sudo yum install git
+git --version
+
+sudo yum install java-11-openjdk-devel
+java -version
+
+
+
+
+
+sudo yum-config-manager --add-repo http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo
+sudo yum-config-manager --enable epel-apache-maven
+sudo yum install -y apache-maven
+
+sudo alternatives --config java
+sudo alternatives --config javac
+
+-------------------------
+para compilar el proyecto
+mvn clean package -DskipTests
+
+sudo firewall-cmd --zone=public --add-port=8080/tcp --permanent
+sudo firewall-cmd --reload
+
+paara arrancar
+
+Juan Parra16:34
+---------borrar archivos en maquina virtual-----------------------
+
+rm -rf (nombre archivo carpeta)
+
+
+-----clonar el backend en la VM ----------
+
+git clone (copia url del github del proyecto)
+ls ----> para mirar los archivos subidos
+cd (nombre de la carpeta subida) ------> entramos en la raiz de la carpeta del proyecto
+mvn clean package -DskipTests   ----> empaquetar el jar para que funcione
+ls
+cd target
+
+
+ambiente de trabajo
+#configuración ambiente de producción
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/rechum?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=admin1234
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+server.port=8080ls
+
+
